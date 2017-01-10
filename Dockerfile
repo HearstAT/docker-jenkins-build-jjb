@@ -9,4 +9,8 @@ RUN sudo apk --update add --no-cache py-pip &&\
       sudo rm -rf /var/cache/apk/* &&\
       sudo rm -rf /tmp/*
 
-CMD ["sudo", "/usr/sbin/sshd", "-D"]
+USER root
+
+RUN /usr/bin/ssh-keygen -A
+
+CMD ["/usr/sbin/sshd", "-D"]
